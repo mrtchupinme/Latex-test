@@ -1,0 +1,51 @@
+\documentclass[12pt]{article}
+\usepackage[latin,russian]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{indentfirst}
+\usepackage{amsmath}
+\usepackage{fixltx2e}
+\title{This is the END}
+\author{This is me}
+\begin{document}
+\newtheorem{thmv}{Theorem}
+\maketitle
+\section{The first one}
+Cегодня мы рассмотрим популяционную модель Мэя с неограниченным распределенным запаздыванием\\
+Модель относится к семейству моделей <<хищник-жертва>>\\
+Допускается, что все параметры системы положительны
+\subsection{Популяционная модель Мэя}
+\begin{equation*}
+    \begin{cases}
+    N(t)'=r N(t)(1-\int_{-\infty}^{0} Q(-s)N(t+s) e^s ds - \alpha P(t) N(t))\\ 
+    P(t)'=\frac{d P(t)}{d t}= P(t)N(t)
+\end{cases}
+\end{equation*}
+   \begin{thmv}
+  Бифуркация Хопфа возможна при выполнении следующих условий:
+    \[1)  \lambda=\pm i \nu \]
+    \[2)  \lambda=\pm i \nu + \lambda \textsubscript{1} \mu + O(\mu \textsuperscript{2}) \]&\text{где Re $\lambda \textsubscript{1} \neq$ 0}\ 
+     \end{thmv}
+    \begin{center}
+        Текст ВКР должен быть оформлен по следующим правилам:\\
+        \Large times new roman 12-14pt
+    \end{center}
+\begin{equation}
+\label{math/1}
+    y_1^1 (t)=e^{it}+e^{-it}
+\end{equation}
+Это уравнение (\ref{math/1}) является решением \emph{ первого приближения }
+  \begin{multline}
+      y(t,\gamma)=\sum_{k=1}^n \gamma^k y^k (t)= \gamma y(t)+\gamma^2 y^2(t)+\gamma^3 y^3(t)+\gamma^4 y^4 (t)  + \gamma^5 y^5(t)+\gamma^6 y^6(t) \\+\gamma^7 y^7(t) +\gamma^8 y^8(t)+\gamma^9 y^9(t)
+  \end{multline}
+  \begin{table}
+      \centering
+      \begin{tabular}{ | c c |}
+         \hline
+           5 & 10 \\
+          11 & 12 \\
+          \hline
+      \end{tabular}
+      \caption{Simple table}
+      \label{tab:my_label}
+  \end{table}
+   \end{document}
