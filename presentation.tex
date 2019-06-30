@@ -1,0 +1,57 @@
+\documentclass[12pt]{beamer}
+\usepackage[russian]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\title{Бифуркация Хопфа}
+\author{Chupin Ilya}
+\institute{Ural Federal University}
+\date{2019}
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\begin{document}
+\frame{\titlepage}
+\begin{frame}
+\frametitle{Бифуркация Хопфа}
+ \begin{multline}
+      y(t,\gamma)=\sum_{k=1}^n \gamma^k y^k (t)= \gamma y(t)+\gamma^2 y^2(t)+\gamma^3 y^3(t)+\gamma^4 y^4 (t)\\  + \gamma^5 y^5(t)+\gamma^6 y^6(t) +\gamma^7 y^7(t) +\gamma^8 y^8(t)+\gamma^9 y^9(t)
+ \label{math/1}
+  \end{multline}
+Это уравнение (\ref{math/1}) является решением \emph{ первого приближения }
+\end{frame}
+\begin{frame}{Формулы}
+    \frametitle{Наши формулы}
+    \begin{columns}
+    \column{0.5\textwidth}
+   \small{ Это наша первая формула}\\
+    \begin{multline}
+    \small{  y(t,\gamma)=\sum_{k=1}^n \gamma^k y^k (t)}
+ \label{math/2}
+  \end{multline}
+  \column{0.5\textwidth}
+  Формула \ref{math/2} представляет собой степенной ряд нашего решения в разложении по вспомогательному параметру $\gamma $. Информацию о модели Мея вы можете найти на \cite{Dolgiy}[стр.~115].\\
+\textbf{ Формулу (\ref{math/1}) можно встретить в таких учебных пособиях как \cite{Pimenov} и \cite{landau}.}
+    \end{columns}
+\end{frame}
+\begin{frame}{Picture}
+    \frametitle{Символ года}
+    \begin{figure}
+    \centering
+    \includegraphics[scale=0.15, angle=45]{nhl}
+    \caption{it is a good day to ...}
+    \label{picture1}
+\end{figure}
+\end{frame}
+\begin{frame}{biblio}
+    \frametitle{Библиография}
+    \begin{thebibliography}{5}
+    \bibitem{Dolgiy}
+    Ю.Ф. Долгий, П.Г.Сурков. Математические модели динамических систем с запаздыванием. Екатеринбург. Издательство Уральского университета.2012г.
+    \bibitem{Pimenov}
+    В.Г. Пименов. Численные методы. Екатеринбург. Издательство Уральского университета, 2012г.
+    \bibitem{landau}
+    Л.Д.Ландау, Е.М.Лифшиц. Статистическая физика.Москва, 1969г.
+    \end{thebibliography}
+    \end{frame}
+\end{document}
