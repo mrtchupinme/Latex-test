@@ -6,54 +6,332 @@
 \graphicspath{ {./images/}}
 \newcommand{\bla}{blablabla}
 \newcommand{\y}{y_1=C_1^1 e^{i \nu \tau} }
-\title{Бифуркация Хопфа}
-\author{Chupin Ilya}
-\institute{Ural Federal University}
-\date{2019}
-\usetheme{Madrid}
-\usecolortheme{beaver}
+\title{Исследование бифуркации Хопфа в популяционной модели Мэя}
+\author{Чупин Илья}
+\institute{Уральский федеральный университет имени Первого президента России \\Б.Н. Ельцина}
+\date{2020}
+%\usetheme{Madrid}
+%\usecolortheme{beaver}
 \begin{document}
 \frame{\titlepage}
 \begin{frame}
-\frametitle{Бифуркация Хопфа}
- \begin{multline}
-      y(t,\gamma)=\sum_{k=1}^n \gamma^k y^k (t)= \gamma y(t)+\gamma^2 y^2(t)+\gamma^3 y^3(t)+\gamma^4 y^4 (t)\\  + \gamma^5 y^5(t)+\gamma^6 y^6(t) +\gamma^7 y^7(t) +\gamma^8 y^8(t)+\gamma^9 y^9(t)
- \label{math/1}
-  \end{multline}
-Это уравнение (\ref{math/1}) является решением \emph{ первого приближения } и связано с \y. 
+\frametitle{Популяционная модель Мэя}
+\begin{equation*}
+    \frac{d N(t)}{d t}=r N(t) \left( \left(1+ \int_{-\infty}^{0}Q(-s) N(t+s) d s \right)-\alpha P(t) \right), 
+    \end{equation*}
+  \begin{equation*}
+    \frac{d P(t)}{d t}=\left( -b + \beta N(t)\right) P(t),
+\end{equation*}
+Функции $N(t)$, $P(t)$ отражают численное количество в момент времени t - жертв(N) и хищников (P)
 \end{frame}
 \begin{frame}{Формулы}
-    \frametitle{Наши формулы}
+    \frametitle{Положение равновесия}
     \begin{columns}
     \column{0.5\textwidth}
-   \small{ Это наша первая формула}\\
-    \begin{multline}
-    \small{  y(t,\gamma)=\sum_{k=1}^n \gamma^k y^k (t)}
- \label{math/2}
-  \end{multline}
+   Положение равновесия системы определяется однозначно \\
+    \begin{align*}
+    N_0=\frac{b}{\beta}\\
+   P_0 = \frac{r}{\alpha} \left( 1 - \frac{b}{\beta}\right)
+  \end{align*}
   \column{0.5\textwidth}
-  Формула \ref{math/2} представляет собой степенной ряд нашего решения в разложении по вспомогательному параметру $\gamma $. Информацию о модели Мея вы можете найти на \cite{Dolgiy}[стр.~115].\\
-\textbf{ Формулу (\ref{math/1}) можно встретить в таких учебных пособиях как \cite{Pimenov} и \cite{landau}.}
+  Заменой $N(t)=N^*(t)+N_0$; $P(t)=P^*(t)+P_0$ система приводится к системе с нулевым положением равновесия, которое необходимо для применения метода Хопфа. Далее исследуется характеристическое уравнение системы.
     \end{columns}
 \end{frame}
-\begin{frame}{Picture}
-    \frametitle{Символ года}
-    \begin{figure}
-    \centering
-    \includegraphics[scale=0.15, angle=45]{nhl}
-    \caption{it \bla}
-    \label{picture1}
-\end{figure}
+\begin{frame}
+    \frametitle{Характеристическое уравнение}
+    \begin{equation*}
+     \lambda^2 + r T N_0 \frac{\lambda}{(1+\lambda)^2}+T^2 b r (1-\frac{b}{\beta})=0
+ \end{equation*}
+ После преобразования получим:
+ \begin{multline*}
+     \lambda^4 +2 \lambda^3+\lambda^2(1+T^2 b r (1-\frac{b}{\beta}))+\lambda(2 T^2 b r (1-\frac{b}{\beta})+T r \frac{b}{\beta})+\\ + T^2 b r (1-\frac{b}{\beta})=0
+ \end{multline*}
+ Для существования периодических решений должны выполняться 2 условия Хопфа \cite{has}:
+ \begin{enumerate}
+ \item   Существуют $\lambda_{1,2}$=$\pm$ i $\nu$\\
+ \item $ Re\lambda_1 \neq 0$, где $\lambda$ =$\pm$ i $\nu$ + $\lambda_1 \mu$ + O ($\mu^2)$\\
+ \end{enumerate}
 \end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Условия Хопфа}
+     Оба условия Хопфа выполняются при наложении на параметры условия связи:
+ \begin{equation*}
+     \beta=\frac{1}{T(1-k)} \left(\frac{1}{T r k} - \frac{1}{2}\right),
+\end{equation*}
+ где $k=\frac{b}{\beta}$, и при этом $\nu=1$. Тогда $N_0=k$, а $P_0=\frac{r}{\alpha} (1-k)$. Также произведем замену $P(t)=P'(t)\alpha$, так как параметр $\alpha$ не влияет на значение корня характеристического уравнения
+\end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Поиск периодических решений}
+    Имеем систему возмущенного движения:
+  \begin{equation}
+      \frac{d N(t)}{d t}= (T+\mu)(N(t)+k)\left( r\int_{-\infty}^{0} s e^s  N(t+s) d s - P(t) \right)
+  \end{equation}
+\begin{equation*}
+      \frac{d P(t)}{d t}= (T+\mu)N(t)( r(1-k) + P(t) )\left( \frac{1}{T r k} - \frac{1}{2}\right)\frac{1}{T(1-k)}
+  \end{equation*}
+  Требуется найти периодическое решение системы (6) для периода $\omega=2 \pi (1+\alpha)$,
+   \begin{equation*}
+       \alpha=\alpha (\mu); a(0)=0.
+       \end{equation*}
+\end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Использование вспомогательного параметра $\gamma$}
+     Введем обозначения: $N(t)=y_1 (t)$, $P(t)=y_2 (t)$ $y(t)=(y_1 (t); y_2(t))^T$. 2$\pi$ -периодические решения $y(t,\gamma)$ системы (1), а также параметры этой системы $\mu(\gamma)$ и $\alpha(\gamma)$ будем искать в форме асимптотических рядов по вспомогательному параметру $\gamma$ \cite{has}, т.е.
+  \begin{equation}
+      y(t,\gamma)=\sum_{k=1}^n \gamma^k y^k (t)= \gamma y(t)+\gamma^2 y^2(t)+\gamma^3 y^3(t)+\ldots
+ \label{math/2}
+  \end{equation}
+   \begin{equation} \label{mu}
+       \mu(\gamma)=\sum_{k=1}^n \gamma^k \mu_k = \gamma \mu_1+\gamma^2 \mu_2+\gamma^3 \mu_3+\ldots
+  \end{equation}
+  \begin{equation}
+       \alpha(\gamma)=\sum_{k=1}^n \gamma^k \alpha_k = \gamma \alpha_1+\gamma^2 \alpha_2+\gamma^3 \alpha_3+\ldots
+  \end{equation}
+\end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Исходная система для поиска периодического решения}
+     \begin{multline}
+      \label{system1}
+       \frac{d y_1(t)}{d t}=(1+\alpha_1 \gamma+\ldots) (T+\mu_1 \gamma+\ldots)(y_1^1(t) \gamma+\ldots+k)( (1+\\+\alpha_1 \gamma++\ldots)^2 r  \int_{-\infty}^{0} s e^{s (1+\alpha_1 \gamma + \ldots)} ( y_1^1(t+s)\gamma +\ldots)d s -\\- (y_2^1(t) \gamma+\ldots ))
+  \end{multline}
+  \begin{multline*}
+     \frac{d y_2(t))}{d t}=(1+\alpha_1 \gamma+\ldots) (T+\mu_1 \gamma+\ldots)(y_1^1(t) \gamma + \ldots)( r(1-k) +\\+( y_2^1(t)\gamma+\ldots) )\left( \frac{1}{T r k} - \frac{1}{2}\right)\frac{1}{T(1-k)}
+  \end{multline*}
+\end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Первое приближение }
+   \begin{equation}\label{s1}
+      \frac{d y^1_1(t)}{d t}=T k (r \int_{-\infty}^{0} s e^{s}y^1_1(t+s)d s -  y^1_2 (t) ) 
+  \end{equation}
+\begin{equation*}
+   \frac{d y^1_2(t)}{d t}= r(\frac{1}{T r k} -\frac{1}{2})y^1_1(t) ,
+\end{equation*}
+ Решение системы первого приближения будет выглядеть следующим образом:
+ \begin{equation*}
+    y_1^1= e^{i t}+ e^{-i t}
+ \end{equation*}
+ \begin{equation*}
+    y_1^2=-i r \left(  \frac{1}{T r k} - \frac{1}{2}\right) e^{+i t}+ i r \left(  \frac{1}{T r k} - \frac{1}{2}\right) e^{-i t}
+ \end{equation*}
+\end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Второе приближение}
+    \begin{equation}\label{s2}
+       \frac{d y^2_1(t)}{d t}=T k (r \int_{-\infty}^{0} s e^{s}y^2_1(t+s)d s -  y^2_2 (t) ) + f^2_1 (t)
+   \end{equation}
+   \begin{equation*}
+   \frac{d y^2_2(t)}{d t}= r(\frac{1}{T r k} -\frac{1}{2})y^2_1(t)+f^2_2 (t) ,
+\end{equation*}
+где $ f^2_1 $ и $f^2_2$ определяются формулами:
+\begin{multline*}
+    f^2_1 (t)=\alpha_1 T k \left( r \int_{-\infty}^{0} s e^{s} y^1_1 (t+s) d s - y^1_2 (t) \right)+\\+\mu_1 k \left( r \int_{-\infty}^{0} s e^{s} y^1_1 (t+s) d s - y^1_2 (t) \right)\\ +T y^1_1 (t) \left( r \int_{-\infty}^{0} s e^{s} y^1_1 (t+s) d s - y^1_2 (t) \right) \\+T k r \left(  2  \alpha_1 \int_{-\infty}^{0} s e^{s} y^1_1 (t+s)d s +  \alpha_1 \int_{-\infty}^{0}s^2 e^{s} y^1_1(t+s) d s     \right) ,
+    \end{multline*}
+   \end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Второе приближение}
+      \begin{equation*}
+    f^2_2(t)=\frac{1}{T (1-k)}\left( \frac{1}{T k r} - \frac{1}{2} \right)\left[ \alpha_1 T y^1_1(t)r(1-k)+\\+\mu_1 y^1_1 (t)r(1-k) + T y^1_1(t) y^1_2(t)       \right].
+    \end{equation*}\\
+    Полученные выражения можно разложить по резонансным гармоникам:
+    \begin{equation}
+      f^2_1(t)=d^1_1 e^{i t}+d^2_1 e^{2 i t} +d^{-1}_1e^{-i t}+d^{-2}_1 e^{-2 i t}
+    \end{equation}
+    \begin{equation*}
+      f^2_2(t)=d^1_2 e^{i t}+d^2_2 e^{2 i t} +d^{-1}_2e^{-i t}+d^{-2}_2 e^{-2 i t},
+    \end{equation*}
+\end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Уравнение отбора}
+    Условием существования 2$\pi$ -периодического решения является уравнение отбора:
+\begin{equation*}
+    \psi^* d^1 =0,
+\end{equation*}
+где $\psi$ - вектор решение сопряженной системы :
+ \begin{equation*}
+     i \psi_1^1=T k r \psi_1^1 \frac{i}{2}- T k \psi_2^1
+ \end{equation*}
+ \begin{equation*}
+     i \psi_2^1=r \left(  \frac{1}{T r k} - \frac{1}{2}\right) \psi_1^1 ,
+ \end{equation*}
+ Откуда получаем
+ \begin{equation*}
+     \psi_1^1 =1
+ \end{equation*}
+ \begin{equation*}
+     \psi_2^1=-i r \left(  \frac{1}{T r k} - \frac{1}{2}\right)
+ \end{equation*}
+\end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Уравнение отбора}
+    Условие существование 2$\pi$-периодического решения принимает вид:
+\begin{equation}
+    \psi_1^{1*} d^1_1+\psi_2^{1*} d^1_2 =0
+\end{equation}
+\begin{multline*}
+   \alpha_1 T k r \left ( -0.5+i(\frac{1}{2}+\frac{1}{T k r}) \right)+\frac{i}{T} \mu_1+\\+i r \left(  \frac{1}{T r k} - \frac{1}{2}\right) \left(\alpha_1  r \left ( \frac{1}{T k r}-\frac{1}{2} \right)++\frac{r}{T} \mu_1 \left ( \frac{1}{T k r}-\frac{1}{2} \right)\right) =0
+\end{multline*}\\
+Откуда получаем, что $\alpha_1$, $\mu_1$ равны 0. Необходимо рассматривать следующее приближение. Поиск периодических решений заканчивается на k-ом шаге, когда $\mu_k$ $\neq$ 0.
+\end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Второе приближение}
+    Для продолжения необходимо найти второй член разложения решения:
+\begin{equation*}
+     y^2_1= C_1^2 e^{2 i t}+ C_1^{-2} e^{-2 i t}
+  \end{equation*}
+  \begin{equation*}
+     y^2_2= C_2^2 e^{2 i t}+ C_2^{-2} e^{-2 i t}
+  \end{equation*}
+  Постоянные $C_1^2$,$C_2^2$ определяются из системы алгебраических уравнений:
+  \begin{equation*}
+     2i C_1^2=T k r C_1^2( \frac{4i}{25}+\frac{3}{25})- T k C_2^2 + \frac{i}{k}
+ \end{equation*}
+ \begin{equation*}
+     2i C_2^2=r \left(  \frac{1}{T r k} - \frac{1}{2}\right) C_1^2-\frac{i r}{1-k} \left(\frac{1}{T r k} - \frac{1}{2} \right)^2
+ \end{equation*}
+   \end{frame}
+\begin{frame}{Frame Title}
+\frametitle{Третье приближение}
+     \begin{equation}\label{s3}
+       \frac{d y^3_1(t)}{d t}=T k \left(r \int_{-\infty}^{0} s e^{s}y^3_1(t+s)d s -  y^3_2 (t) \right) + f^3_1 (t)
+   \end{equation}
+   \begin{equation*}
+   \frac{d y^3_2(t)}{d t}= r\left(\frac{1}{T r k} -\frac{1}{2}\right)y^3_1(t)+f^3_2 (t) ,
+\end{equation*}
+где $ f^3_1 $ и $f^3_2$ определяются формулами:
+\begin{multline}
+    f^3_1 (t)=\alpha_2 T k \left( r \int_{-\infty}^{0} s e^{s} y^1_1 (t+s) d s - y^1_2 (t) \right)+\\+\mu_2 k \left( r \int_{-\infty}^{0} s e^{s} y^1_1 (t+s) d s - y^1_2 (t) \right)\\ +T y^1_1 (t) \left( r \int_{-\infty}^{0} s e^{s} y^2_1 (t+s) d s - y^2_2 (t) \right) \\+T k r \left(  2  \alpha_2 \int_{-\infty}^{0} s e^{s} y^1_1 (t+s)d s +  \alpha_2 \int_{-\infty}^{0}s^2 e^{s} y^1_1(t+s) d s     \right) 
+    \end{multline}
+\end{frame}
+\begin{frame}
+\frametitle{Третье приближение}
+     \begin{equation*}
+    +T y^2_1 \left( r \int_{-\infty}^{0}s e^s y^1_1(t+s) d s - y^1_2(t)\right),
+    \end{equation*}
+     \begin{multline*}
+    f^3_2(t)=\frac{1}{T (1-k)}\left( \frac{1}{T k r} - \frac{1}{2} \right)\left[ \alpha_1 T y^1_1(t)r(1-k)+\\+\mu_1 y^1_1 (t)r(1-k) + T( y^1_1(t) y^2_2(t)     + y^2_1 y^1_2  )\right].
+    \end{multline*}
+    Полученные выражения можно разложить по резонансным гармоникам:
+ \begin{equation}
+      f^3_1(t)=d^1_1 e^{i t}+d^3_1 e^{3 i t} +d^{-1}_1e^{-i t}+d^{-3}_1 e^{-3 i t}
+    \end{equation}
+    \begin{equation*}
+      f^3_2(t)=d^1_2 e^{i t}+d^3_2 e^{3 i t} +d^{-1}_2e^{-i t}+d^{-3}_2 e^{-3 i t},
+    \end{equation*}
+\end{frame}
+\begin{frame}
+\frametitle{Уравнение отбора}
+    Условие существование 2$\pi$-периодического решения принимает вид:
+\begin{equation*}
+    \psi_1^{1*} d^1_1+\psi_2^{1*} d^1_2 =0
+\end{equation*}
+\begin{multline*}
+   \alpha_2 T k r \left ( -0.5+i\left(\frac{1}{2}+\frac{1}{T k r}\right) \right)+\frac{i}{T} \mu_2+d_1\\+i r \left(  \frac{1}{T r k} - \frac{1}{2}\right) \left(\alpha_2  r \left ( \frac{1}{T k r}-\frac{1}{2} \right)+\frac{r}{T} \mu_2 \left ( \frac{1}{T k r}-\frac{1}{2} \right)+d_2\right) =0
+\end{multline*}
+\end{frame}
+\begin{frame}
+\frametitle{Решение уравнения отбора}
+  \begin{equation*}
+    \frac{-1}{2} \alpha_2 T k r + Re d_1 + \left(\frac{1}{2}-\frac{1}{T k r}\right) r Im d_2=0,
+\end{equation*}
+\begin{multline*}
+ \frac{\mu_2}{T}+\alpha_2 T k r \left(\frac{1}{2}-\frac{1}{T k r}\right) + Im d_1-\\- \left(\frac{1}{2}-\frac{1}{T k r}\right)^2 r^2 \alpha_2-\left(\frac{1}{2}-\frac{1}{T k r}\right)^2 r^2 \frac{\mu_2}{T}-
+ \left(\frac{1}{2}-\frac{1}{T k r}\right)r Re d_2 =0
+\end{multline*} 
+\end{frame}
+\begin{frame}
+\frametitle{Явная зависимость $\alpha_2$ от исходных параметров}
+    \begin{equation*}
+ \alpha_2 =\frac{1}{16 (1-k)^2 T^3 k^3 r(144 T^2 k^2 r^2 + (150+9 T k r)^2)} \alpha^*,
+\end{equation*}
+где $\alpha^*$:
+\begin{multline*}
+    \alpha^*=124800-\frac{120000}{k}+172800 r T -184800 T r k+120000 T^2 k -\\- 120000 T^2 k^2 - 79200 T^2 r^2 k +91200 T^2 r^2 k^2 -112800 T^3 k^2 r +\\+112800 T^3 r k^3+ 9600 T^3 r^3 k^2 -15600 T^3 r^3 k^3 + 19200 T^4 r^2 k^2 -\\-15600 T^4 r^2 k^3 -3600 T^4 r^2 k^4 +900 T^4 r^4 k^3 +600 T^4 r^4 k^4 +\\+ 1800 T^5 r^3 k^4 -1800 T^5 r^3 k^5 -150 T^5 r^5 k^5
+\end{multline*}
+\end{frame}
+\begin{frame}
+    \frametitle{Зависимость $\mu_2$ от исходных параметров}
+    \begin{multline*}
+    \mu^*=750 k^8 r^6 T^8+6000 k^8 r^4 T^8+150 k^7 r^7 T^7+1200 k^7 r^5 T^7-\\-13200 k^7 r^4 T^8+91200 k^7 r^3 T^7-1200 k^6 r^6 T^6-1200 k^6 r^5 T^7+\\+7200 k^6 r^4 T^8+17400 k^6 r^4 T^6-110400 k^6 r^3 T^7+9600 k^6 r^2 T^6-\\-900 k^5 r^6 T^6+18600 k^5 r^5 T^5-14400 k^5 r^4 T^6+19200 k^5 r^3 T^7-\\-259200 k^5 r^3 T^5-172800. k^5 r^2 T^6-211200. k^5 r T^5-6000 k^4 r^5 T^5-\\-19200 k^4 r^4 T^6-156000 k^4 r^4 T^4+192000 k^4 r^3 T^5+163200 k^4 r^2 T^6+\\+784800 k^4 r^2 T^4+211200 k^4 r T^5+480000 k^4 T^4+114000 k^3 r^4 T^4+\\+76800 k^3 r^3 T^5+612000 k^3 r^3 T^3-556800 k^3 r^2 T^4-825600 k^3 r T^3-\\-480000 k^3 T^4-528000 k^2 r^3 T^3-76800 k^2 r^2 T^4-1228800 k^2 r^2 T^2+\\+480000 k^2 r T^3+220800 k^2 T^2+1128000 k r^2 T^2+\\+1238400 k r T+\frac{480000}{k}-1171200 r T+499200
+\end{multline*}
+\end{frame}
+\begin{frame}
+\frametitle{Периодические решения}
+  \begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{mu2area}
+    \caption{Выделенные области соответствуют отрицательным значения параметра $\mu_2$}
+    \label{fig:mu2}
+\end{figure}
+Рассматривается область существования периодических решений с условием выполнения условий ограничений на параметры
+$T r k <2$, $0<k<1$
+\end{frame}
+\begin{frame}
+\frametitle{Система уравнений возмущения}
+  \begin{multline}
+      \label{system1zl}
+       \frac{d z_1 (t)}{d t}=(1+\alpha) (T+\mu )((y_1(t) +k)\left( (1+\alpha)^2 r  \int_{-\infty}^{0} s e^{s}(1+\\+\alpha s)  z_1(t+s)d s -z_2(t) \right)+\\+z_1(t)\left( (1+\alpha)^2 r  \int_{-\infty}^{0} s e^{s}(1+\alpha s)  y_1(t+s)d s -y_2(t) \right))
+  \end{multline}
+  \begin{multline*}
+     \frac{d z_2(t)}{d t}=(1+\alpha) (T+\mu)(z_1(t)( r(1-k) + y_2(t))+\\+y_1(t)z_2(t) )\left( \frac{1}{T r k} - \frac{1}{2}\right)\frac{1}{T(1-k)}
+  \end{multline*}
+\end{frame}
+\begin{frame}
+\frametitle{Решение Флоке}
+  Для  системы линейного приближения существуют два чисто мнимых корня $\pm i$ характеристического уравнения при наложенных условиях связи на параметры. Им отвечает кратный характеристический показатель $\lambda_0 (0) =0$. Согласно теореме Андронова-Витте \cite{has}, устойчивость периодического решения определяется ненулевым характеристическим показателем $\lambda (\gamma)$, для которого имеет место асимптотическое разложение:
+\begin{equation}
+    \lambda (\gamma)=\lambda_1 \gamma + \lambda_2 \gamma^2 + O(\gamma^3)
+\end{equation}
+Этому асимптотическому разложению отвечает решение Флоке:
+\begin{equation*}
+ z(t, \gamma)=u(t, \gamma)e^{\lambda (\gamma) t},
+\end{equation*}
+где $u(t+2 \pi, \gamma)=u(t, \gamma)$.\\
+\end{frame}
+\beНахождение решения Флоке сводится к нахождению 2$\pi$-периодического решения системы уравнений
+\begin{multline}
+      \label{system1ul}
+       \frac{d u_1 (t)}{d t}=(1+\alpha) (T+\mu )((y_1(t) +k)( (1+\alpha)^2 r  \int_{-\infty}^{0} s e^{s}(1+\\+(\alpha + \lambda (\gamma))s)  u_1(t+s)d s -\\-u_2(t))+u_1(t)\left( (1+\alpha)^2 r  \int_{-\infty}^{0} s e^{s}(1+\alpha s)  y_1(t+s)d s -\\-y_2(t) \right))-u_1 (t) \lambda (\gamma)
+  \end{multline}
+  \begin{multline*}
+     \frac{d u_2(t)}{d t}=(1+\alpha) (T+\mu)(u_1(t)( r(1-k) + y_2(t))+\\+y_1(t)u_2(t) )\left( \frac{1}{T r k} - \frac{1}{2}\right)\frac{1}{T(1-k)}-\\-u_2 (t) \lambda (\gamma)
+  \end{multline*}
+\begin{frame}
+\frametitle{Система уравнений возмущения}
+  Периодическое решение системы (\ref{system1ul}) ищем с помощью асимптотического разложения:
+\begin{equation*}
+    u(t, \gamma)= u^0 (t) + u^1 (t)\gamma + u^2(t) \gamma^2 + O(\gamma^3)
+\end{equation*}  
+\end{frame}
+\begin{frame}
+\frametitle{Уравнение для $\lambda$}
+  \begin{equation}
+    \lambda_2 ^2  -\lambda_2 p \mu_2 =0,
+\end{equation}
+Решением такого уравнения являются корни:
+\begin{equation}
+    \begin{cases}
+    \lambda_2 =0 \\
+    \lambda_2 = p \mu_2
+    \end{cases}
+\end{equation}
+Нас интересует знак второго корня уравнения.При численном исследовании на всей области определения параметров, с условием выполнения всех ограничений параметр p<0. Значит реализуются 2 случая:
+\begin{enumerate}
+ \item $ \mu_2 >0 $ и $\lambda_2 <0$, тогда периодические решения вне области устойчивости существуют и они устойчивы\\
+ \item $ \mu_2 < 0 $ и $\lambda_2 >0$, тогда периодические решения есть внутри области устойчивости и они неустойчивы.\\
+ \end{enumerate}
+\end{frame}
+
 \begin{frame}{biblio}
     \frametitle{Библиография}
     \begin{thebibliography}{5}
     \bibitem{Dolgiy}
     Ю.Ф. Долгий, П.Г.Сурков. Математические модели динамических систем с запаздыванием. Екатеринбург. Издательство Уральского университета.2012г.
-    \bibitem{Pimenov}
-    В.Г. Пименов. Численные методы. Екатеринбург. Издательство Уральского университета, 2012г.
-    \bibitem{landau}
-    Л.Д.Ландау, Е.М.Лифшиц. Статистическая физика.Москва, 1969г.
+    \bibitem{has}
+    Хэссард Б., Казаринов Н., Вэн И. Теория и приложения бифуркации рождения цикла. М. : Мир, 1985.
+    \bibitem{baz}
+    Базыкин А.Д. Нелинейная динамика взаимодействующих популяций. Москва-Ижевск: Институт компьютерных исследований, 2003г.
+    \bibitem{svir}
+    Свирежев Ю.М., Логофет Д.О. Устойчивость биологических сообществ. Главная редакция физико-математической литературы издательства «Наука», М.,1978.
     \end{thebibliography}
-    \end{frame}
+      \end{frame}
 \end{document}
